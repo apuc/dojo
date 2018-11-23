@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import AuthLogin from './components/Auth/AuthLogin';
 import AuthRegistration from './components/Auth/AuthRegistration';
+import AuthResetPassword from './components/Auth/AuthResetPassword';
 
 Vue.use(Router);
 
@@ -20,6 +21,12 @@ export default new Router({
       name: 'registration',
       meta: {layout: 'auth'},
       component: AuthRegistration,
+    },
+    {
+      path: '/reset_password',
+      name: 'reset_password',
+      meta: {layout: 'auth'},
+      component: AuthResetPassword,
     },
   ]
 })

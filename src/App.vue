@@ -25,10 +25,16 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #3d3d3d;
+  }
+
+  .btn {
+    padding: 0;
+    border: none;
+    background-color: white;
   }
 </style>
