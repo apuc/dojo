@@ -14,6 +14,8 @@
 
       <AuthInput v-for="(input, index) in login"
                  :key="input.name"
+                 :value="input.value"
+                 @changedata="onChangeLogin(index, $event)"
                  :type="input.type"
                  :name="input.name"
                  :placeholder="input.placeholder"
@@ -33,6 +35,8 @@
 
       <AuthInput v-for="(input, index) in registration"
                  :key="input.name"
+                 :value="input.value"
+                 @changedata="onChangeReg(index, $event)"
                  :type="input.type"
                  :name="input.name"
                  :placeholder="input.placeholder"
@@ -70,11 +74,13 @@
             type: 'email',
             name: 'email',
             placeholder: 'Ваш E-mail',
+            value: '',
           },
           {
             type: 'password',
             name: 'password',
             placeholder: 'Ваш пароль',
+            value: '',
           },
         ],
         registration: [
@@ -82,21 +88,25 @@
             type: 'text',
             name: 'name',
             placeholder: 'Ваше имя',
+            value: '',
           },
           {
             type: 'email',
             name: 'email',
             placeholder: 'Ваш E-mail',
+            value: '',
           },
           {
             type: 'password',
             name: 'password',
             placeholder: 'Ваш пароль',
+            value: '',
           },
           {
             type: 'password',
             name: 'repeat-password',
             placeholder: 'Повторите пароль',
+            value: '',
           },
         ],
         authBtns: [
@@ -114,6 +124,14 @@
           },
         ]
       }
+    },
+    methods: {
+      onChangeLogin(index, data) {
+        this.login[index].value = data.value;
+      },
+      onChangeReg(index, data) {
+        this.registration[index].value = data.value;
+      },
     }
   }
 </script>

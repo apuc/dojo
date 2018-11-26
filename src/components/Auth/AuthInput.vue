@@ -1,5 +1,9 @@
 <template>
-  <input :type="type" :name="name" :placeholder="placeholder">
+  <input :type="type"
+         :name="name"
+         :placeholder="placeholder"
+         @input="onInput"
+  >
 </template>
 
 <script>
@@ -17,6 +21,18 @@
       placeholder: {
         type: String,
         required: true
+      }
+    },
+    data() {
+      return {
+
+      }
+    },
+    methods: {
+      onInput(e) {
+        this.$emit('changedata', {
+          value: e.target.value
+        })
       }
     }
   }

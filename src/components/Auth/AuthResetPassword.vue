@@ -6,16 +6,48 @@
 
     <section>
       <form class="reset-pass">
-        <input class="reset-pass__input" type="email" placeholder="E-mail для восстановления">
-        <button class="btn btn__reset-pass" type="submit"></button>
+        <input class="reset-pass__input"
+               type="email"
+               placeholder="E-mail для восстановления"
+               v-model="email"
+        >
+        <button class="btn btn__reset-pass" type="submit" @click="openModal"></button>
       </form>
     </section>
+
+    <div class="modal" v-if="isModalActive">
+      <div class="modal__backdrop" @click="closeModal"></div>
+
+      <div class="modal__container">
+        <button type="button" class="btn modal__close" @click="closeModal"></button>
+
+        <div class="modal__content">
+          <p class="modal__title">Посмотрите вашу почту</p>
+          <p class="modal__desc">Мы отправили сообщения на вашу почту.</p>
+          <button type="button" class="btn btn__hold" @click="closeModal">@mail</button>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 
 <script>
   export default {
-    name: "AuthResetPassword"
+    name: "AuthResetPassword",
+    data() {
+      return {
+        email: '',
+        isModalActive: false
+      }
+    },
+    methods: {
+      openModal() {
+        this.isModalActive = true;
+      },
+      closeModal() {
+        this.isModalActive = false;
+      }
+    }
   }
 </script>
 
@@ -99,6 +131,7 @@
     transform: rotate(45deg);
     background-color: #f30d46;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   .btn__reset-pass::before{
@@ -110,5 +143,113 @@
     transform: translate(-18%, 20%);
     border-top: 1px solid white;
     border-right: 1px solid white;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .modal__backdrop {
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0,0,0, 0.44);
+  }
+
+  .modal__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+    background-color: #ced2d3;
+  }
+
+  .modal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    width: 600px;
+    height: 232px;
+    padding: 20px 90px;
+  }
+
+  .modal__title {
+    margin: 0;
+    padding: 10px 0;
+
+    font-size: 20px;
+    letter-spacing: 0.8px;
+
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
+  }
+
+  .modal__desc {
+    margin-top: 35px;
+
+    font-size: 17px;
+    letter-spacing: 0.68px;
+  }
+
+  .btn__hold {
+    width: 160px;
+    padding-top: 5px;
+    padding-bottom: 7px;
+
+    color: white;
+    border-radius: 15px;
+    background-color: #3d3d3d;
+    cursor: pointer;
+  }
+
+  .modal__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 2;
+
+    width: 26px;
+    height: 26px;
+
+    background-color: #3d3d3d;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .modal__close::before,
+  .modal__close::after{
+    content: '';
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 15px;
+    height: 1px;
+
+    background-color: #fff;
+  }
+
+  .modal__close::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .modal__close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 </style>

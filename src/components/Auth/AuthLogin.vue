@@ -28,7 +28,12 @@
   import AuthBody from "./AuthBody";
   export default {
     name: "AuthLogin",
-    components: {AuthBody}
+    components: {AuthBody},
+    data() {
+      return {
+
+      }
+    }
   }
 </script>
 
