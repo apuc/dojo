@@ -5,6 +5,14 @@
     </header>
 
     <section>
+      <div class="auth-form__social">
+        <AuthSocialButton v-for="(icon, index) in authBtns"
+                          :key="icon.iconName"
+                          :iconSrc="icon.iconSrc"
+                          :iconName="icon.iconName"
+        />
+      </div>
+
       <AuthBody :bodyType="'registration'"/>
 
       <div class="auth-bot">
@@ -40,12 +48,30 @@
 
 <script>
   import AuthBody from "./AuthBody";
+  import AuthSocialButton from "./AuthSocialButton";
+  import fb_icon from "../../assets/icons/fb.png"
+  import vk_icon from "../../assets/icons/vk.png"
+  import gp_icon from "../../assets/icons/gp.png"
 
   export default {
     name: "Registration",
-    components: {AuthBody},
+    components: {AuthSocialButton, AuthBody},
     data() {
       return {
+        authBtns: [
+          {
+            iconSrc: vk_icon,
+            iconName: 'vk-login'
+          },
+          {
+            iconSrc: fb_icon,
+            iconName: 'fb-login'
+          },
+          {
+            iconSrc: gp_icon,
+            iconName: 'gp-login'
+          },
+        ],
         isModalActive: false
       }
     },
@@ -70,6 +96,11 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
   }
 
   .nav-link {
@@ -102,6 +133,18 @@
     border-top: none;
     border-right: none;
     transform: rotate(45deg);
+  }
+
+  .auth-form__social {
+    position: absolute;
+    top: 50%;
+    left: -65px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    transform: translateY(-50%);
   }
 
   .auth-bot {

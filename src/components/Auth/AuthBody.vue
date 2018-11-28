@@ -4,13 +4,6 @@
     <p class="auth-body__title-desc">{{bodyType === 'login' ? 'Авторизация' : 'Регистрация'}}</p>
 
     <form class="auth-form" v-if="bodyType === 'login'">
-      <div class="auth-form__social">
-        <AuthSocialButton v-for="(icon, index) in authBtns"
-                    :key="icon.iconName"
-                    :iconSrc="icon.iconSrc"
-                    :iconName="icon.iconName"
-        />
-      </div>
 
       <AuthInput v-for="(input, index) in login"
                  :key="input.name"
@@ -25,13 +18,6 @@
     </form>
 
     <form class="auth-form" v-else>
-      <div class="auth-form__social">
-        <AuthSocialButton v-for="(icon, index) in authBtns"
-                          :key="icon.iconName"
-                          :iconSrc="icon.iconSrc"
-                          :iconName="icon.iconName"
-        />
-      </div>
 
       <AuthInput v-for="(input, index) in registration"
                  :key="input.name"
@@ -53,14 +39,10 @@
 
 <script>
   import AuthInput from "./AuthInput";
-  import AuthSocialButton from "./AuthSocialButton";
-  import fb_icon from "../../assets/icons/fb.png"
-  import vk_icon from "../../assets/icons/vk.png"
-  import gp_icon from "../../assets/icons/gp.png"
 
   export default {
     name: "AuthBody",
-    components: {AuthSocialButton, AuthInput},
+    components: {AuthInput},
     props: {
       bodyType: {
         type: String,
@@ -109,20 +91,6 @@
             value: '',
           },
         ],
-        authBtns: [
-          {
-            iconSrc: vk_icon,
-            iconName: 'vk-login'
-          },
-          {
-            iconSrc: fb_icon,
-            iconName: 'fb-login'
-          },
-          {
-            iconSrc: gp_icon,
-            iconName: 'gp-login'
-          },
-        ]
       }
     },
     methods: {
@@ -178,18 +146,6 @@
     justify-content: flex-start;
     width: 100%;
     margin-top: 50px;
-  }
-
-  .auth-form__social {
-    position: absolute;
-    bottom: 20%;
-    left: -65px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    /*transform: translateY(-50%);*/
   }
 
   .auth-form__link {
