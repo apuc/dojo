@@ -91,6 +91,7 @@
     position: relative;
     z-index: 1;
 
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,12 +104,14 @@
     z-index: 1;
   }
 
-  .nav-link {
+  header {
     position: absolute;
     top: 35px;
     left: 100px;
     z-index: 1;
+  }
 
+  .nav-link {
     display: inline-flex;
     align-items: center;
 
