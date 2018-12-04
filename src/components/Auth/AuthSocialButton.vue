@@ -29,6 +29,7 @@
 
     border-bottom-left-radius: 100px;
     border-top-left-radius: 100px;
+    cursor: pointer;
   }
 
   .btn__auth-soc:last-child {

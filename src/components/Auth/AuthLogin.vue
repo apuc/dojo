@@ -35,9 +35,9 @@
 <script>
   import AuthBody from "./AuthBody";
   import AuthSocialButton from "./AuthSocialButton";
-  import fb_icon from "../../assets/icons/fb.png"
-  import vk_icon from "../../assets/icons/vk.png"
-  import gp_icon from "../../assets/icons/gp.png"
+  import fb_icon from "../../assets/icons/fb.svg"
+  import vk_icon from "../../assets/icons/vk.svg"
+  import gp_icon from "../../assets/icons/gp.svg"
 
   export default {
     name: "AuthLogin",

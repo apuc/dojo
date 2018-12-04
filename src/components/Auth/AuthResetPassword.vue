@@ -11,23 +11,25 @@
                placeholder="E-mail для восстановления"
                v-model="email"
         >
-        <button class="btn btn__reset-pass" type="submit" @click="openModal"></button>
+        <button class="btn btn__reset-pass" type="submit" @click.prevent="openModal"></button>
       </form>
     </section>
 
-    <div class="modal" v-if="isModalActive">
-      <div class="modal__backdrop" @click="closeModal"></div>
+    <transition name="fade">
+      <div class="modal" v-if="isModalActive">
+        <div class="modal__backdrop" @click="closeModal"></div>
 
-      <div class="modal__container">
-        <button type="button" class="btn modal__close" @click="closeModal"></button>
+        <div class="modal__container">
+          <button type="button" class="btn modal__close" @click="closeModal"></button>
 
-        <div class="modal__content">
-          <p class="modal__title">Посмотрите вашу почту</p>
-          <p class="modal__desc">Мы отправили сообщения на вашу почту.</p>
-          <button type="button" class="btn btn__hold" @click="closeModal">@mail</button>
+          <div class="modal__content">
+            <p class="modal__title">Посмотрите вашу почту</p>
+            <p class="modal__desc">Мы отправили сообщения на вашу почту.</p>
+            <button type="button" class="btn btn__hold" @click="closeModal">@mail</button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </main>
 </template>
 
@@ -56,11 +58,23 @@
     position: relative;
     z-index: 1;
 
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+  }
+
+  header {
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    z-index: 1;
+  }
+
+  section {
+    position: relative;
+    z-index: 1;
   }
 
   .nav-link {
@@ -251,5 +265,12 @@
 
   .modal__close::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>
