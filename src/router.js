@@ -4,6 +4,7 @@ import AuthLogin from './components/Auth/AuthLogin';
 import AuthRegistration from './components/Auth/AuthRegistration';
 import AuthResetPassword from './components/Auth/AuthResetPassword';
 import Profile from './components/Profile/Profile';
+import Inside from './components/Inside';
 
 Vue.use(Router);
 
@@ -18,18 +19,6 @@ export default new Router({
       component: AuthLogin,
     },
     {
-      path: '/',
-      name: 'profile',
-      meta: {layout: 'profile'},
-      component: Profile,
-    },
-    {
-      path: '/:id',
-      name: 'profile',
-      meta: {layout: 'profile'},
-      component: Profile,
-    },
-    {
       path: '/registration',
       name: 'registration',
       meta: {layout: 'auth'},
@@ -40,6 +29,18 @@ export default new Router({
       name: 'reset_password',
       meta: {layout: 'auth'},
       component: AuthResetPassword,
+    },
+    {
+      path: '/',
+      name: 'main',
+      meta: {layout: 'main'},
+      component: Inside,
+    },
+    {
+      path: '/:id',
+      name: 'main',
+      meta: {layout: 'main'},
+      component: Inside,
     },
   ]
 })

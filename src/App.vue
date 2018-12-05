@@ -27,6 +27,13 @@
     overflow-x: hidden;
   }
 
+  button, a {
+    font-weight: 300;
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+  }
+
   #app {
     display: flex;
     flex-direction: column;
@@ -35,17 +42,75 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #3d3d3d;
+    color: white;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+
+    font-size: 18px;
+    /*font-weight: 400;*/
+    letter-spacing: 0.36px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: relative;
+    top: 0;
+
+    display: block;
+    width: 9px;
+    height: 9px;
+    margin-right: 15px;
+
+    border: 1px solid white;
+    border-top: none;
+    border-right: none;
+    transform: rotate(45deg);
   }
 
   .btn {
-    padding: 0;
+    padding: 7px 58px;
+    color: white;
+
     border: none;
-    background-color: white;
+    cursor: pointer;
+    border-radius: 6px;
   }
 
-  .btn__transparent {
+  .btn_transparent {
     background-color: transparent;
+  }
+
+  .btn_white {
+    background-color: white;
+  }
+  
+  .btn_blue {
+    background-color: #237ACF;
+  }
+
+  .btn_black {
+    background-color: #2a2a2a;
+    border-radius: 4px;
+  }
+
+  .mr20 {
+    margin-right: 20px;
+  }
+
+  .mr20:last-child {
+    margin-right: 0;
+  }
+  
+  .btn_nulled {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
   }
 
   .slide-enter-active, .slide-leave-active {
@@ -54,13 +119,5 @@
   .slide-enter, .slide-leave-to {
     opacity: 0;
     transform: translateX(100%);
-  }
-
-  .btn__mr20 {
-    margin-right: 20px;
-  }
-
-  .btn__mr20:last-child {
-    margin-right: 0;
   }
 </style>

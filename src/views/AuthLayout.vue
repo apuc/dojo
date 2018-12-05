@@ -15,6 +15,9 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
+
+    color: #3d3d3d;
+
     background-image: url('../assets/auth_bg.png');
     background-repeat: no-repeat;
     background-size: cover;

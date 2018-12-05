@@ -87,33 +87,6 @@
     z-index: 1;
   }
 
-  .nav-link {
-    display: inline-flex;
-    align-items: center;
-
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0.36px;
-    color: white;
-    text-decoration: none;
-  }
-
-  .nav-link::before {
-    content: '';
-    position: relative;
-    top: 1px;
-
-    display: block;
-    width: 9px;
-    height: 9px;
-    margin-right: 15px;
-
-    border: 1px solid white;
-    border-top: none;
-    border-right: none;
-    transform: rotate(45deg);
-  }
-
   .auth-form__social {
     position: absolute;
     top: 50%;

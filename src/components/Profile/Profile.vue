@@ -1,19 +1,26 @@
 <template>
-  <main>
-    <ProfileNav />
-  </main>
+  <div class="profile">
+    <ProfileHeader/>
+    <ProfileMain/>
+  </div>
 </template>
 
 <script>
-  import ProfileNav from "./ProfileNav";
+  import Nav from "../Nav/Nav";
+  import ProfileHeader from "./ProfileHeader";
+  import ProfileMain from "./ProfileMain";
+
   export default {
     name: "Profile",
-    components: {ProfileNav}
+    components: {ProfileMain, ProfileHeader, Nav}
   }
 </script>
 
 <style scoped>
-  main {
+  .profile {
+    flex: 1 1 auto;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 </style>

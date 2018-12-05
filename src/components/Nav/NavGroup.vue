@@ -13,7 +13,9 @@
                      :to="data.notifications.link"
         >
           {{data.notifications.name}}
-           <span>{{data.notifications.counter}}</span>
+           <span class="notification" v-if="data.notifications.counter > 0">
+             {{data.notifications.counter}}
+           </span>
         </router-link>
 
       <div v-if="data.fieldsWithIcons">
@@ -31,7 +33,7 @@
 
 <script>
   export default {
-    name: "ProfileNavGroup",
+    name: "NavGroup",
     props: {
       data: {
         type: Object,
@@ -58,7 +60,7 @@
     list-style: none;
   }
 
-  h5, li, a {
+  h5, li {
     font-weight: 300;
     color: white;
     text-decoration: none;
@@ -81,7 +83,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 10px;
+    padding: 10px 0;
   }
 
   .router-link-active {
@@ -98,6 +101,19 @@
     width: 3px;
     height: 100%;
 
-    background-color:  #FF3366;
+    background-color:  #f30d46;
+  }
+
+  .notification {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+    height: 21px;
+
+    font-size: 11px;
+
+    background-color: #f30d46;
+    border-radius: 50%;
   }
 </style>
