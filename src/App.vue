@@ -41,7 +41,7 @@
     font-family: 'Segoe UI', 'Roboto', 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
     color: white;
   }
 
@@ -74,11 +74,17 @@
 
   .btn {
     padding: 7px 58px;
+
+    font-size: 14px;
     color: white;
 
     border: none;
     cursor: pointer;
     border-radius: 6px;
+  }
+
+  .btn_small {
+    padding: 7px 30px;
   }
 
   .btn_transparent {
@@ -93,9 +99,50 @@
     background-color: #237ACF;
   }
 
+  .btn_blue:hover,
+  .btn_blue:active,
+  .btn_blue:focus {
+    background-color: #175b9e;
+  }
+
+  .btn_blue[disabled] {
+    background-color: #6a95be;
+    pointer-events: none;
+  }
+
+  .btn_pink {
+    background-color: #f30d46;
+  }
+
+  .btn_pink:hover,
+  .btn_pink:active,
+  .btn_pink:focus {
+    background-color: #dc1446;
+  }
+
+  .btn_pink[disabled] {
+    background-color: #e75075;
+    pointer-events: none;
+  }
+
   .btn_black {
     background-color: #2a2a2a;
     border-radius: 4px;
+  }
+
+  .btn_black:hover,
+  .btn_black:active,
+  .btn_black:focus {
+    background-color: #1a1a1a;
+  }
+
+  .btn_black[disabled] {
+    background-color: #858585;
+    pointer-events: none;
+  }
+
+  .btn_rounded {
+    border-radius: 27px;
   }
 
   .mr20 {

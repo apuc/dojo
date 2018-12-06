@@ -34,11 +34,17 @@
     </div>
 
     <div class="bottom">
-      <nav>
-        <router-link to="/feed">Лента</router-link>
-        <router-link to="/courses">Составленные курсы</router-link>
-        <router-link to="/about">Обо мне</router-link>
+      <nav class="profile-nav">
+        <router-link class="profile-nav__link" to="/user/123/feed">Лента</router-link>
+        <router-link class="profile-nav__link" to="/user/123/courses">Составленные курсы</router-link>
+        <router-link class="profile-nav__link" to="/user/123/about">Обо мне</router-link>
       </nav>
+
+      <div class="communication">
+        <button type="button" class="btn btn_small btn_blue mr20">Написать сообщение</button>
+
+        <button type="button" class="btn btn_small btn_pink mr20">Подписаться 10тыс.</button>
+      </div>
     </div>
   </header>
 </template>
@@ -51,6 +57,9 @@
 
 <style scoped>
   header {
+    position: relative;
+    z-index: 2;
+
     width: 100%;
     height: 300px;
     padding-top: 25px;
@@ -132,5 +141,33 @@
 
   .user-info__etc-span:last-child {
     margin-right: 0;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 31px;
+  }
+
+  .profile-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .profile-nav__link {
+    padding: 18px 30px;
+    padding-top: 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .router-link-exact-active {
+    box-sizing: border-box;
+    border-bottom-color: white;
+  }
+
+  .communication {
+    margin-bottom: -15px;
   }
 </style>

@@ -4,7 +4,9 @@ import AuthLogin from './components/Auth/AuthLogin';
 import AuthRegistration from './components/Auth/AuthRegistration';
 import AuthResetPassword from './components/Auth/AuthResetPassword';
 import Profile from './components/Profile/Profile';
-import Inside from './components/Inside';
+import ProfileFeed from './components/Profile/ProfileFeed';
+import ProfileCourses from './components/Profile/ProfileCourses';
+import ProfileAbout from './components/Profile/ProfileAbout';
 
 Vue.use(Router);
 
@@ -30,17 +32,28 @@ export default new Router({
       meta: {layout: 'auth'},
       component: AuthResetPassword,
     },
+    // {
+    //   path: '/',
+    //   name: 'main',
+    //   meta: {layout: 'main'},
+    //   component: Profile,
+    //   children: [
+    //     { path: '', component: ProfileFeed },
+    //     { path: 'courses', component: ProfileCourses },
+    //     { path: 'about', component: ProfileAbout },
+    //   ]
+    // },
     {
-      path: '/',
+      path: '/user/:id',
       name: 'main',
       meta: {layout: 'main'},
-      component: Inside,
-    },
-    {
-      path: '/:id',
-      name: 'main',
-      meta: {layout: 'main'},
-      component: Inside,
+      redirect: '/user/:id/feed',
+      component: Profile,
+      children: [
+        { path: 'feed', component: ProfileFeed },
+        { path: 'courses', component: ProfileCourses },
+        { path: 'about', component: ProfileAbout },
+      ]
     },
   ]
 })

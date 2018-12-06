@@ -112,6 +112,7 @@
 
     font-size: 22px;
     letter-spacing: 0.44px;
+    color: #3d3d3d;
 
     box-shadow: 0 0 99px rgba(0, 0, 0, 0.16);
     border-radius: 10px;

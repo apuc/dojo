@@ -1,18 +1,17 @@
 <template>
   <div class="profile">
     <ProfileHeader/>
-    <ProfileMain/>
+    <transition name="fade" type="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-  import Nav from "../Nav/Nav";
   import ProfileHeader from "./ProfileHeader";
-  import ProfileMain from "./ProfileMain";
-
   export default {
     name: "Profile",
-    components: {ProfileMain, ProfileHeader, Nav}
+    components: {ProfileHeader}
   }
 </script>
 
@@ -21,6 +20,14 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
   }
 </style>
