@@ -1,27 +1,17 @@
 <template>
-  <article class="news">
-    <header class="news__header">
-      <div v-html="text"></div>
-    </header>
+  <div>
+    <article class="news"
+             v-for="(post, index) in news"
+             :key="post.title"
+    >
+      <component :is="post.type"
+                 :text="post.text"
+                 :post="post.post"
+      ></component>
 
-    <div class="news__body">
-      <router-link tag="div"
-                   to="/post-name"
-                   class="news__post post"
-      >
-        <img class="post__img" :src="post.imgSrc" alt="">
-
-        <div class="post__data">
-          <p class="post__title">{{post.title}}</p>
-          <p class="post__author">{{post.author}}</p>
-          <span class="btn btn_blue btn_rounded post__read">Читать</span>
-        </div>
-      </router-link>
-    </div>
-
-    <footer class="news__footer">
-      <button class="btn_nulled news__like">
-        <svg v-if="!isLiked"
+      <footer class="news__footer">
+        <button class="btn_nulled news__like">
+          <svg v-if="!post.isLiked"
            xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            version="1.1"
@@ -41,7 +31,7 @@
         </svg>
 
         <svg v-else
-               version="1.1"
+             version="1.1"
              id="Capa_1"
              xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -59,13 +49,13 @@
             c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
         </svg>
 
-        <span class="likes">
-          {{likesCalculated}}
+          <span class="likes">
+          {{post.likes >= 1000 ? `${Math.round(post.likes / 1000)}K` : post.likes}}
         </span>
-      </button>
+        </button>
 
-      <div class="news__views">
-        <svg xmlns="http://www.w3.org/2000/svg"
+        <div class="news__views">
+          <svg xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            version="1.1"
            id="Capa_1"
@@ -83,50 +73,68 @@
           </g>
         </svg>
 
-        <span class="views">
-          {{viewsCalculated}}
-        </span>
-      </div>
-    </footer>
-  </article>
+          <span class="views">
+            {{post.views >= 1000 ? `${Math.round(post.views / 1000)}K` : post.views}}
+          </span>
+        </div>
+      </footer>
+    </article>
+  </div>
 </template>
 
 <script>
+  import mushroom from '../../assets/3.jpg';
+  import smoke from '../../assets/5.jpg';
+  import wave from '../../assets/2.jpg';
+  import ProfileFeedPost from './ProfileFeedPost';
+  import ProfileFeedAttachments from './ProfileFeedAttachments';
+  import ProfileFeedCourse from './ProfileFeedCourse';
+
   export default {
     name: "ProfileFeedNews",
-    props: {
-      likes: {
-        type: Number,
-        default: 0
-      },
-      isLiked: {
-        type: Boolean,
-        default: false
-      },
-      views: {
-        type: Number,
-        default: 0
-      },
-      text: {
-        type: String,
-        required: false
-      },
-      pictures: {
-        type: Array,
-        required: false
-      },
-      post: {
-        type: Object,
-        required: false
-      }
-    },
+    components: {ProfileFeedPost, ProfileFeedAttachments, ProfileFeedCourse},
     computed: {
-      viewsCalculated() {
-        return this.views >= 1000 ? `${Math.round(this.likes / 1000)}K` : this.views
-      },
-      likesCalculated() {
-        return this.likes >= 1000 ? `${Math.round(this.likes / 1000)}K` : this.likes
-      },
+    },
+    data() {
+      return {
+        news: [
+          {
+            text: '',
+            post: {
+              event: 'Успешное окончание курса от PinkBing',
+              title: 'Веб-разработчик от А до Б и В и Я тоже',
+              user: 'Тимофея Агинского',
+              achievements: ['', '', '', ''],
+            },
+            likes: 900,
+            views: 2000,
+            type: 'ProfileFeedCourse',
+            isLiked: true
+          },
+          {
+            text: 'Стоит воспринимать гриб как радиоволну и сильную личность. Зачем, почему я не юзаю lorem? а ? <br/> <a href="#Статьи@Тимофей_Агинский">#Статьи@Тимофей_Агинский</a>',
+            post: {
+              title: 'Ленин-гриб',
+              author: 'Тимофей Агинский',
+              imgSrc: mushroom
+            },
+            likes: 900,
+            views: 2000,
+            type: 'ProfileFeedPost',
+            isLiked: false
+          },
+          {
+            text: 'Стоит воспринимать гриб как радиоволну и сильную личность. <br/> <a href="#Статьи@Тимофей_Агинский">#Статьи@Тимофей_Агинский</a>',
+            post: {
+              imgSrc: [smoke, mushroom, wave]
+            },
+            likes: 900,
+            views: 2000,
+            type: 'ProfileFeedAttachments',
+            isLiked: false
+          }
+        ]
+      }
     }
   }
 </script>
@@ -135,6 +143,7 @@
   .news {
     width: 670px;
     height: auto;
+    margin-bottom: 30px;
     padding: 20px 30px;
     box-sizing: border-box;
 
@@ -154,10 +163,6 @@
     align-items: center;
   }
 
-  .news__header {
-    margin-bottom: 25px;
-  }
-
   .news__footer {
     justify-content: space-between;
     margin-top: 30px;
@@ -174,56 +179,5 @@
   .views {
     font-size: 14px;
     color: #E0E0E0;
-  }
-
-  .news__post {
-    position: relative;
-    z-index: 1;
-
-    width: 100%;
-    height: 180px;
-
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  .post__data {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-
-    background-color: rgba(0,0,0, 0.5);
-  }
-
-  .post__img {
-    position: absolute;
-    z-index: 1;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-  }
-
-  .post__title {
-    margin: 0;
-    font-size: 28px;
-    font-weight: 500;
-  }
-
-  .post__author {
-    margin: 0;
-    font-size: 14px;
-  }
-
-  .post__read {
-    margin-top: 17px;
   }
 </style>

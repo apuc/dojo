@@ -1,5 +1,6 @@
 <template>
   <div class="profile">
+    <ProfileSearchBar/>
     <ProfileHeader/>
     <transition name="fade" type="out-in">
       <router-view></router-view>
@@ -9,9 +10,10 @@
 
 <script>
   import ProfileHeader from "./ProfileHeader";
+  import ProfileSearchBar from "./ProfileSearchBar";
   export default {
     name: "Profile",
-    components: {ProfileHeader}
+    components: {ProfileSearchBar, ProfileHeader}
   }
 </script>
 

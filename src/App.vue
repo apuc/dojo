@@ -149,8 +149,13 @@
     margin-right: 20px;
   }
 
-  .mr20:last-child {
+  .mr20:last-child,
+  .mr35:last-child {
     margin-right: 0;
+  }
+
+  .mr35 {
+    margin-right: 35px;
   }
   
   .btn_nulled {
