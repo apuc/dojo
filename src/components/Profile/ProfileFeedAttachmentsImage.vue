@@ -21,10 +21,6 @@
         required: true
       }
     },
-    mounted() {
-      console.log(this.$refs.attachmentImg);
-      console.log(this.$refs.attachmentImg.height);
-    }
   }
 </script>
 

@@ -6,6 +6,7 @@
 
     <div>
       <ProfileCourses v-for="(course, index) in courses"
+                      :key="index"
                       :title="course.title"
                       :language="course.language"
                       :mentor="course.mentor"
