@@ -1,66 +1,53 @@
 <template>
-  <div class="course">
-    <p class="course__title">{{title}}</p>
-
-    <div class="course__info">
-      <div class="course__lang btn btn_black btn_small">
-        {{language}}
-      </div>
-
-      <div class="course__mentor btn btn_black btn_small">
-        {{mentor}}
-      </div>
-
-      <div class="course__price btn btn_blue">
-        {{cost}}
-      </div>
-
-      <div class="course__views">
-        {{views}}
-      </div>
-    </div>
-  </div>
+  <main class="main main_courses">
+    <ProfileCoursesCourse v-for="(course, index) in courses"
+                          :key="index"
+                          :title="course.title"
+                          :desc="course.desc"
+                          :skills="course.skills"
+                          :price="course.price"
+                          :participants="course.participants"
+    />
+  </main>
 </template>
 
 <script>
+  import ProfileCoursesCourse from "./ProfileCoursesCourse";
   export default {
     name: "ProfileCourses",
-    props: {
-      title: {
-        type: String,
-        required: true
-      },
-      language: {
-        type: String,
-        required: true
-      },
-      mentor: {
-        type: String,
-        required: true
-      },
-      cost: {
-        type: String,
-        required: true
-      },
-      views: {
-        type: Number,
-        required: true
-      },
+    components: {ProfileCoursesCourse},
+    data() {
+      return {
+        courses: [
+          {
+            title: 'Python от А до Я',
+            desc: 'Углублённое изучение Python, от лучшего преподавателя',
+            skills: ['Основы Python', 'Динамическая типизация', 'Основы ООП Python', 'Django Python', 'Kivy Python'],
+            price: '9 300 P',
+            participants: 32426
+          },
+          {
+            title: 'Python от А до Я',
+            desc: 'Углублённое изучение Python, от лучшего преподавателя',
+            skills: ['Основы Python', 'Динамическая типизация', 'Основы ООП Python', 'Django Python', 'Kivy Python'],
+            price: 'Бесплатно',
+            participants: 3246
+          },
+          {
+            title: 'Python от А до Я',
+            desc: 'Углублённое изучение Python, от лучшего преподавателя',
+            skills: ['Основы Python', 'Динамическая типизация', 'Основы ООП Python', 'Django Python', 'Kivy Python'],
+            price: '9 300 P',
+            participants: 176
+          },
+        ]
+      }
     }
   }
 </script>
 
 <style scoped>
-  .course {
-
-  }
-
-  .course__info {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-
-    background-color: #212121;
-    border-radius: 8px;
+  .main_courses {
+    flex-direction: column;
   }
 </style>

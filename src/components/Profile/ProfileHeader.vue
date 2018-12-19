@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="profile-header">
     <div class="head">
       <router-link to="/feed" class="nav-link">Лента</router-link>
 
@@ -35,7 +35,7 @@
 
     <div class="bottom">
       <nav class="profile-nav">
-        <router-link class="profile-nav__link" to="/user/123/feed">Лента</router-link>
+        <!--<router-link class="profile-nav__link" to="/user/123/feed">Лента</router-link>-->
         <router-link class="profile-nav__link" to="/user/123/courses">Составленные курсы</router-link>
         <router-link class="profile-nav__link" to="/user/123/about">Обо мне</router-link>
       </nav>
@@ -56,12 +56,12 @@
 </script>
 
 <style scoped>
-  header {
+  .profile-header {
     position: relative;
     z-index: 2;
 
     width: 100%;
-    height: 300px;
+    height: 309px;
     padding-top: 25px;
     padding-right: 50px;
     padding-left: 25px;
@@ -115,7 +115,9 @@
   }
 
   .user-info__type {
+    min-width: initial;
     padding: 1px 17px;
+
     font-size: 11px;
     cursor: default;
   }
@@ -136,7 +138,6 @@
     margin-right: 20px;
 
     font-size: 13px;
-    font-weight: bold;
   }
 
   .user-info__etc-span:last-child {

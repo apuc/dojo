@@ -50,7 +50,6 @@
     align-items: center;
 
     font-size: 18px;
-    /*font-weight: 400;*/
     letter-spacing: 0.36px;
     color: white;
     text-decoration: none;
@@ -72,10 +71,18 @@
     transform: rotate(45deg);
   }
 
+  /**
+   * стили кнопок
+   */
+
   .btn {
+    display: inline-block;
+    min-width: 200px;
+    box-sizing: border-box;
     padding: 7px 58px;
 
     font-size: 14px;
+    text-align: center;
     color: white;
 
     border: none;
@@ -84,7 +91,13 @@
   }
 
   .btn_small {
+    min-width: 150px;
     padding: 7px 30px;
+  }
+
+  .btn_extraSmall {
+    min-width: 110px;
+    padding: 5px 30px;
   }
 
   .btn_transparent {
@@ -141,23 +154,21 @@
     pointer-events: none;
   }
 
+  .btn_blacker-noHover,
+  .btn_blacker {
+    background-color: #181717;
+  }
+
+  .btn_blacker-noHover:hover,
+  .btn_blacker-noHover:active,
+  .btn_blacker-noHover:focus {
+    background-color: #181717;
+  }
+
   .btn_rounded {
     border-radius: 27px;
   }
 
-  .mr20 {
-    margin-right: 20px;
-  }
-
-  .mr20:last-child,
-  .mr35:last-child {
-    margin-right: 0;
-  }
-
-  .mr35 {
-    margin-right: 35px;
-  }
-  
   .btn_nulled {
     padding: 0;
     background-color: transparent;
@@ -165,11 +176,60 @@
     cursor: pointer;
   }
 
+  /**
+   * стили отступов
+   */
+
+  .mr10 {
+    margin-right: 10px;
+  }
+
+  .mr20 {
+    margin-right: 20px;
+  }
+
+  .mr35 {
+    margin-right: 35px;
+  }
+
+  .mr50 {
+    margin-right: 50px;
+  }
+
+  .mr10:last-child,
+  .mr20:last-child,
+  .mr35:last-child,
+  .mr50:last-child {
+    margin-right: 0;
+  }
+
+  /**
+   * стили переходов между страницами
+   */
+
   .slide-enter-active, .slide-leave-active {
     transition: opacity 0.3s, transform 0.3s;
   }
   .slide-enter, .slide-leave-to {
     opacity: 0;
     transform: translateX(100%);
+  }
+
+  /**
+   * стили внутренних страниц
+   */
+  .main {
+    position: relative;
+    z-index: 1;
+
+    flex: 1 1 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px;
+    padding-right: 50px;
+    box-sizing: border-box;
+
+    background-color: #2a2a2a;
   }
 </style>

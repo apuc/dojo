@@ -1,11 +1,11 @@
 <template>
-  <main class="feed-main">
+  <main class="main">
     <div class="feed">
       <ProfileFeedNews />
     </div>
 
-    <div>
-      <ProfileCourses v-for="(course, index) in courses"
+    <div class="feed-courses">
+      <ProfileFeedCourses v-for="(course, index) in courses"
                       :key="index"
                       :title="course.title"
                       :language="course.language"
@@ -19,11 +19,11 @@
 
 <script>
   import ProfileFeedNews from "./ProfileFeedNews";
-  import ProfileCourses from "./ProfileCourses";
+  import ProfileFeedCourses from "./ProfileFeedCourses";
 
   export default {
     name: "ProfileMain",
-    components: {ProfileCourses, ProfileFeedNews},
+    components: {ProfileFeedCourses, ProfileFeedNews},
     data() {
       return {
         courses: [
@@ -55,18 +55,8 @@
 </script>
 
 <style scoped>
-  .feed-main {
-    position: relative;
-    z-index: 1;
-
-    flex: 1 1 auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 30px;
-    padding-right: 50px;
-    box-sizing: border-box;
-
-    background-color: #2a2a2a;
+  .feed-courses {
+    position: sticky;
+    top: 0;
   }
 </style>

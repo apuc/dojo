@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main-layout">
     <Nav/>
     <slot/>
   </div>
@@ -14,7 +14,7 @@
 </script>
 
 <style scoped>
-  .main {
+  .main-layout {
     flex-grow: 1;
     display: flex;
   }
