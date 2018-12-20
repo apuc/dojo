@@ -1,5 +1,5 @@
 <template>
-  <div class="search-bar">
+  <div class="search-bar headroom" :class="{'headroom--unpinned': scrolled}" v-scroll="handleScroll">
     <form class="search-bar__form mr35">
       <input class="search-bar__input" type="search">
 
@@ -24,14 +24,51 @@
 
 <script>
   export default {
-    name: "ProfileSearchBar"
+    name: "ProfileSearchBar",
+    data() {
+      return {
+        limitPosition: 300,
+        scrolled: false,
+        lastPosition: 0
+      }
+    },
+    methods: {
+      handleScroll(evt, el) {
+        if (this.lastPosition < window.scrollY && this.limitPosition < window.scrollY) {
+          this.scrolled = true;
+          // move up!
+        }
+
+        if (this.lastPosition > window.scrollY) {
+          this.scrolled = false;
+          // move down
+        }
+
+        this.lastPosition = window.scrollY;
+        // this.scrolled = window.scrollY > 250;
+      }
+    },
   }
 </script>
 
 <style scoped>
+  .headroom {
+    will-change: transform;
+    transition: transform 100ms linear;
+  }
+
+  .headroom--unpinned {
+    transform: translateY(-100%);
+  }
+
   .search-bar {
+    position: fixed;
+    z-index: 3;
+
     display: flex;
     align-items: center;
+    width: calc(100% - 250px);
+    box-sizing: border-box;
     padding: 20px;
 
     background-color: #212121;

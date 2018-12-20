@@ -1,7 +1,9 @@
 <template>
   <div class="profile">
     <ProfileSearchBar/>
+
     <ProfileHeader/>
+
     <transition name="fade" type="out-in">
       <router-view></router-view>
     </transition>
@@ -28,7 +30,7 @@
   }
 
   .fade-enter-active, .fade-leave-active {
-    transition: opacity 0.3s, transform 0.3s;
+    transition: opacity 0.2s, transform 0.2s;
   }
 
   .fade-enter, .fade-leave-to {

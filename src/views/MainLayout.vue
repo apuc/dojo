@@ -17,5 +17,7 @@
   .main-layout {
     flex-grow: 1;
     display: flex;
+
+    background-color: #2a2a2a;
   }
 </style>

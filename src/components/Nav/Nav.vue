@@ -49,11 +49,9 @@
         </div>
       </header>
 
-      <NavGroup :data="study"/>
-      <NavGroup :data="communication"/>
-      <NavGroup :data="startups"/>
-
-      <hr class="border-nav">
+      <NavGroup :data="menu"/>
+      <!--<NavGroup :data="communication"/>-->
+      <!--<NavGroup :data="startups"/>-->
     </div>
   </aside>
 </template>
@@ -69,62 +67,79 @@
     components: {NavGroup},
     data() {
       return {
-        study: {
-          title: 'Обучение',
+        menu: {
           info: [
             {
-              link: '/feed',
-              name: 'Лента'
+              link: '/',
+              name: 'Главная'
             },
             {
               link: '/courses',
               name: 'Курсы'
-            },
-          ],
-          fieldsWithIcons: [
-            {
-              link: '/create-course',
-              name: 'Создать курс',
-              imgSrc: edit
-            },
-            {
-              link: '/join-course',
-              name: 'Поступить на курс',
-              imgSrc: play_button
-            },
-          ],
-          notifications: {
-            link: '/notifications',
-            name: 'Уведомления',
-            counter: 5
-          },
-        },
-        communication: {
-          title: 'Общение',
-          info: [
-            {
-              link: '/groups',
-              name: 'Группы'
-            },
-            {
-              link: '/messages',
-              name: 'Сообщения'
             }
           ],
-        },
-        startups: {
-          title: 'Стартапы',
-          info: [
-            {
-              link: '/find-team',
-              name: 'Найти команду'
+            notifications: {
+              link: '/notifications',
+              name: 'Уведомления',
+              counter: 5
             },
-            {
-              link: '/create-team',
-              name: 'Создать стартап'
-            }
-          ],
         },
+        // study: {
+        //   title: 'Обучение',
+        //   info: [
+        //     {
+        //       link: '/feed',
+        //       name: 'Лента'
+        //     },
+        //     {
+        //       link: '/courses',
+        //       name: 'Курсы'
+        //     },
+        //   ],
+        //   fieldsWithIcons: [
+        //     {
+        //       link: '/create-course',
+        //       name: 'Создать курс',
+        //       imgSrc: edit
+        //     },
+        //     {
+        //       link: '/join-course',
+        //       name: 'Поступить на курс',
+        //       imgSrc: play_button
+        //     },
+        //   ],
+        //   notifications: {
+        //     link: '/notifications',
+        //     name: 'Уведомления',
+        //     counter: 5
+        //   },
+        // },
+        // communication: {
+        //   title: 'Общение',
+        //   info: [
+        //     {
+        //       link: '/groups',
+        //       name: 'Группы'
+        //     },
+        //     {
+        //       link: '/messages',
+        //       name: 'Сообщения'
+        //     }
+        //   ],
+        // },
+        // startups: {
+        //   title: 'Стартапы',
+        //   info: [
+        //     {
+        //       link: '/find-team',
+        //       name: 'Найти команду'
+        //     },
+        //     {
+        //       link: '/create-team',
+        //       name: 'Создать стартап'
+        //     }
+        //   ],
+        // },
         isProfileOpened: false,
       }
     },

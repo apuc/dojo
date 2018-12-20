@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="bottom">
+    <div class="bottom" v-scroll="handleScroll">
       <nav class="profile-nav">
         <!--<router-link class="profile-nav__link" to="/user/123/feed">Лента</router-link>-->
         <router-link class="profile-nav__link" to="/user/123/courses">Составленные курсы</router-link>
@@ -51,7 +51,38 @@
 
 <script>
   export default {
-    name: "ProfileHeader"
+    name: "ProfileHeader",
+    data() {
+      return {
+        limitPosition: 320,
+        scrolled: false,
+        lastPosition: 0
+      }
+    },
+    methods: {
+      handleScroll(evt, el) {
+        if (this.lastPosition < window.scrollY && this.limitPosition < window.scrollY) {
+          this.scrolled = true;
+          el.setAttribute('style', 'position: fixed; top: 0; width: calc(100% - 250px); margin-top: 0; background-color: #2a2a2a;')
+          // move up!
+        } else if (this.lastPosition > window.scrollY && this.limitPosition >= window.scrollY) {
+          el.removeAttribute('style');
+          this.scrolled = false;
+        } else if (this.lastPosition > window.scrollY) {
+          el.style.top = '80px'
+        }
+
+
+
+        this.lastPosition = window.scrollY;
+      }
+    },
+    created() {
+      window.addEventListener("scroll", this.handleScroll);
+    },
+    destroyed() {
+      window.removeEventListener("scroll", this.handleScroll);
+    }
   }
 </script>
 
@@ -62,14 +93,20 @@
 
     width: 100%;
     height: 309px;
-    padding-top: 25px;
-    padding-right: 50px;
-    padding-left: 25px;
-
     box-sizing: border-box;
+    margin-top: 80px;
+    padding-top: 25px;
 
     background-image: url(../../assets/5.jpg);
     background-size: cover;
+  }
+
+  .head,
+  .info,
+  .bottom {
+    box-sizing: border-box;
+    padding-right: 50px;
+    padding-left: 25px;
   }
 
   .head {
@@ -148,7 +185,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 31px;
+    margin-top: 21px;
+
+    will-change: transition;
+    transition: top 0.2s, margin-top 0.2s;
   }
 
   .profile-nav {
@@ -158,8 +198,7 @@
   }
 
   .profile-nav__link {
-    padding: 18px 30px;
-    padding-top: 0;
+    padding: 14px 30px;
     border-bottom: 2px solid transparent;
   }
 

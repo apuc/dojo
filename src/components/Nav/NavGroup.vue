@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h5>{{data.title}}</h5>
+    <!--<h5>{{data.title}}</h5>-->
 
     <nav>
         <router-link v-for="(elem, index) in data.info"
