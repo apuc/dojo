@@ -87,11 +87,11 @@
     padding: 10px 0;
   }
 
-  .router-link-active {
+  .router-link-exact-active {
     font-weight: 400;
   }
 
-  .router-link-active::before {
+  .router-link-exact-active::before {
     content: '';
 
     position: absolute;

@@ -47,10 +47,10 @@ export default new Router({
       path: '/user/:id',
       name: 'main',
       meta: {layout: 'main'},
-      redirect: '/user/:id/feed',
+      redirect: '/user/:id/courses',
       component: Profile,
       children: [
-        { path: 'feed', component: ProfileFeed },
+        // { path: 'feed', component: ProfileFeed },
         { path: 'courses', component: ProfileCourses },
         { path: 'about', component: ProfileAbout },
       ]

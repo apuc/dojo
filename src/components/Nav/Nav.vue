@@ -37,7 +37,7 @@
           </svg>
             </button>
 
-            <div class="profile-m" v-if="isProfileOpened">
+            <div class="profile-m" v-if="isProfileOpened" @mouseleave="openProfile">
               <router-link class="profile-m__link" to="/profile">Мой профиль</router-link>
               <router-link class="profile-m__link" to="/edit-profile">Редактировать</router-link>
               <hr class="border-menu">
